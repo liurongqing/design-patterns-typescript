@@ -1,33 +1,39 @@
-interface Shape {
-    draw(): void
+/**
+ * 抽象产品角色
+ */
+interface Product {
+    use(): Function
 }
 
-class Rectangle implements Shape {
-    public draw(): void {
-        console.log('Rectangle')
+/**
+ * 具体产品角色
+ */
+class ProductA implements ProductA {
+    use() {
+        console.log('A')
     }
 }
 
-class Square implements Shape {
-    public draw(): void {
-        console.log('Square')
+class ProductB implements ProductB {
+    use() {
+        console.log('B')
     }
 }
 
-class Circle implements Shape {
-    public draw(): void {
-        console.log('Circle')
+type FactoryType = 'A' | 'B'
+/**
+ * 工厂角色
+ */
+class ProductFactory {
+    constructor() { }
+
+    createProduct(type: FactoryType) {
+        const func = { 'A': ProductA, 'B': ProductB }[type]
+        return func ? new func() : null
     }
 }
 
-type ShapeTypes = 'circle' | 'rectangle' | 'square'
 
-class ShapeFactory {
-    getShape(shapeType: string) {
-        return {
-            'circle': new Circle(),
-            'rectangle': new Rectangle(),
-            'square': new Square()
-        }?.[shapeType.toLocaleLowerCase() as ShapeTypes] ?? null
-    }
-}
+const factory = new ProductFactory()
+factory.createProduct('A')
+factory.createProduct('B')
