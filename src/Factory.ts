@@ -1,39 +1,22 @@
-/**
- * 抽象产品角色
- */
-interface Product {
-    use(): Function
+interface Chair {
+    hasLegs(): any
+    sitOn(): any
 }
 
-/**
- * 具体产品角色
- */
-class ProductA implements ProductA {
-    use() {
-        console.log('A')
-    }
+class VictorianChair implements Chair {
+    hasLegs() { }
+    sitOn() { }
 }
 
-class ProductB implements ProductB {
-    use() {
-        console.log('B')
-    }
+class ModernChair implements Chair {
+    hasLegs() { }
+    sitOn() { }
 }
 
-type FactoryType = 'A' | 'B'
-/**
- * 工厂角色
- */
-class ProductFactory {
-    constructor() { }
-
-    createProduct(type: FactoryType) {
-        const func = { 'A': ProductA, 'B': ProductB }[type]
-        return func ? new func() : null
-    }
+interface FurnitureFactory {
+    createChair(): Chair
 }
 
-
-const factory = new ProductFactory()
-factory.createProduct('A')
-factory.createProduct('B')
+class VictorianFurnitureFactory implements FurnitureFactory {
+    createChair(){}
+}
