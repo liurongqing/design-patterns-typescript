@@ -3,6 +3,8 @@
  * 确保一个类只有一个实例
  * 提供实例的全局访问点
  */
+
+ 
 class Singleton {
     private static instance: Singleton
 
