@@ -1,4 +1,4 @@
-> 一个类，只有一个实例
+> 一个类只有一个实例
 
 ```ts
 class Singleton {
@@ -11,5 +11,6 @@ class Singleton {
   }
 }
 
+// 调用
 // Singleton.instance.xx
 ```
